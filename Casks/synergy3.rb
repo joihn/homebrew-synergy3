@@ -20,7 +20,7 @@ cask "synergy3" do
     strategy :page_match
   end
 
-  depends_on macos: ">= :monterey"
+  depends_on macos: :monterey
 
   app "Synergy.app"
 
