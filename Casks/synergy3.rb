@@ -7,8 +7,8 @@ cask "synergy3" do
   sha256 arm:   "8fb39b09a0354ab29878f8eb96aa32b815ed897cc7ea23da26150e55f5aa2321",
          intel: "5b51490936f893fca4e88995a8c95e98cda44606feb71291cafc83b6633d61d2"
 
-  url "https://symless.com/synergy/download/package/synergy-personal-v3/macos-12.0/" \
-      "synergy-#{version}-macos-#{arch}.dmg",
+  url "https://symless.com/synergy/download/package/synergy-personal-v3/macos-12.0/synergy-#{version}-" \
+      "macos-#{arch}.dmg",
       using: Synergy3DownloadStrategy
   name "Synergy 3"
   desc "Share one keyboard and mouse across multiple computers"
