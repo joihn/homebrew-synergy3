@@ -25,6 +25,10 @@ and commits the cask change. The next `brew update` fetches that commit, and
 `brew upgrade` installs it. The tap does not run background upgrades on users'
 Macs.
 
+GitHub may automatically disable scheduled workflows in a public repository
+after 60 days without repository activity. If that happens, re-enable the
+workflow from the repository's Actions page.
+
 ## Update locally
 
 ```sh
