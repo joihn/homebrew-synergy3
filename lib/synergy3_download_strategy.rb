@@ -16,7 +16,12 @@ class Synergy3DownloadStrategy < CurlDownloadStrategy
     return super unless uri.host == "symless.com" && uri.path.start_with?(PACKAGE_PATH_PREFIX)
 
     @synergy_resolved_url ||= begin
-      page = curl_output("--fail", "--location", "--silent", url, timeout: timeout).stdout
+      result = curl_output("--fail", "--location", "--silent", "--show-error", url, timeout: timeout)
+      unless result.success?
+        raise CurlDownloadStrategyError.new(url, result.stderr.strip)
+      end
+
+      page = result.stdout
       token = page[/\\"token\\":\\"([^"\\]+)\\"/, 1]
       raise CurlDownloadStrategyError.new(url, "Could not find Synergy guest download token") if token.nil?
 
