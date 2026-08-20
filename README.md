@@ -7,32 +7,23 @@ release-specific SHA-256 checksum.
 
 ## Install
 
-First publish this directory as `gardodev/homebrew-synergy`:
-
 ```sh
-cd /Users/maximegardoni/Downloads/homebrew-synergy
-gh auth login -h github.com
-gh repo create gardodev/homebrew-synergy --public --source=. --remote=origin --push
-```
-
-Then install from the public tap:
-
-```sh
-brew untap gardodev/synergy 2>/dev/null || true
-brew tap gardodev/synergy
-brew install --cask synergy3
+brew tap joihn/synergy3
+brew install --cask joihn/synergy3/synergy3
 ```
 
 Normal Homebrew updates then work as expected:
 
 ```sh
 brew update
-brew upgrade --cask synergy3
+brew upgrade --cask joihn/synergy3/synergy3
 ```
 
 The scheduled GitHub Actions workflow checks for a new release each day. On a
 new release it downloads both macOS builds, updates the version and checksums,
-and commits the cask change. The next `brew update` fetches that commit.
+and commits the cask change. The next `brew update` fetches that commit, and
+`brew upgrade` installs it. The tap does not run background upgrades on users'
+Macs.
 
 ## Update locally
 
