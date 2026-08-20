@@ -1,3 +1,4 @@
+# typed: strict
 # frozen_string_literal: true
 
 require "download_strategy"
@@ -11,11 +12,15 @@ class Synergy3DownloadStrategy < CurlDownloadStrategy
 
   private
 
+  sig {
+    override.params(url: String, timeout: T.nilable(T.any(Float, Integer)))
+            .returns(CurlDownloadStrategy::URLMetadata)
+  }
   def resolve_url_basename_time_file_size(url, timeout: nil)
     uri = URI(url)
-    return super unless uri.host == "symless.com" && uri.path.start_with?(PACKAGE_PATH_PREFIX)
+    return super if uri.host != "symless.com" || !uri.path.start_with?(PACKAGE_PATH_PREFIX)
 
-    @synergy_resolved_url ||= begin
+    @resolve_url_basename_time_file_size ||= begin
       result = curl_output("--fail", "--location", "--silent", "--show-error", url, timeout: timeout)
       unless result.success?
         raise CurlDownloadStrategyError.new(url, result.stderr.strip)
