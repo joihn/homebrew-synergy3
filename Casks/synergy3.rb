@@ -3,9 +3,9 @@ require_relative "../lib/synergy3_download_strategy"
 cask "synergy3" do
   arch arm: "arm64", intel: "x64"
 
-  version "3.8.3"
-  sha256 arm:   "3cdeea5731014af9a0a0fd7174ec8d5ed825bbc21df7adbbee4c645aa3cdc000",
-         intel: "38965c00260fde439cc9afc7e4d95625d9bf2fb6462242f023614b0fd8f694d2"
+  version "3.8.4"
+  sha256 arm:   "df5fd65cc8f37945fbda7efa26511c787dbf21a8f108ddffc562af0366ff1097",
+         intel: "eb6c89ac2ce9c88d3cdc820e06e0a44d404f2c676d6fbafa661471a5ce21fdc9"
 
   url "https://symless.com/synergy/download/package/synergy-personal-v3/macos-12.0/synergy-#{version}-" \
       "macos-#{arch}.dmg",
